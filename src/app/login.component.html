@@ -1,0 +1,9 @@
+<div *ngIf="flag" >
+    <h1>Hey Welcome to Chat App</h1>
+    <br>
+    <p>Please Enter Your Name To Login</p>
+    <input type="text" #username>
+    <br>
+    <br>
+    <button (click)="login(username.value); flag=false ">Login</button>
+</div>

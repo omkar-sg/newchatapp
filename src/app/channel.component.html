@@ -1,0 +1,12 @@
+<strong>Channels</strong>
+<div *ngFor="let ch of getchannels()">
+    <button (click)="setcurrentch(ch)">{{ch}}</button>
+
+
+</div>
+<hr>
+
+<div>
+    <input type="text" #channelname>
+    <button (click)="addchannel(channelname.value)"> Add Channel</button>
+</div>
