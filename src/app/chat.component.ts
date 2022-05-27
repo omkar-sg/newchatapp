@@ -27,5 +27,10 @@ export class Chat{
 
     }
 
+    logout(){
+        this.flag=false
+        return true
+    }
+
     
 }

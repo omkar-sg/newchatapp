@@ -1,13 +1,18 @@
 <div >
-    <nca-login (chatuiflag)="uiflag($event)"></nca-login>
+    <nca-login [flag1]="flag" (chatuiflag)="uiflag($event)"></nca-login>
 </div>
 
 
 
 <div class="container" *ngIf="flag">
-  <h1>Welcome {{usr}}</h1>
+  <h1 class="justify-content-center d-flex">Welcome {{usr}}</h1>
     
         <nca-channel></nca-channel>
+        <br>
+        <hr>
+        <button (click)="logout()">Logout</button>
+        <hr>
+        <hr>
       
       <!-- <div class="col">
         <nca-channel></nca-channel>

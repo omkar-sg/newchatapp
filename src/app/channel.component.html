@@ -26,7 +26,7 @@
 <div class="row">
     <div class="col-4">
         <div *ngFor="let ch of getchannels()">
-            <p><button (click)="setcurrentch(ch)">{{ch}}</button> </p>
+            <p><button (click)="setcurrentch(ch)" class="btn-sm btn-dark">{{ch}}</button> </p>
 
 
         </div>
@@ -34,18 +34,21 @@
 
         <div>
             <input type="text" #channelname>
-            <button (click)="addchannel(channelname.value); "> Add Channel</button>
+            <button (click)="addchannel(channelname.value); " class="btn-sm btn-primary"> Add Channel</button>
         </div>
+        <hr>
+        <nca-members></nca-members>
+
     </div>
     <div class="col">
         <div>
             <Strong>Group Chat {{ch}}</Strong> &nbsp; 
-            <button *ngIf="flag1" (click)="subscribech();">Subscribe</button>
+            <button *ngIf="flag1" class="btn btn-success"(click)="subscribech();">Subscribe</button>
             &nbsp;
-            <button *ngIf="flag2" (click)="unsubscribech()">Unsubscribe</button>
+            <button *ngIf="flag2" class="btn btn-danger" (click)="unsubscribech()">Unsubscribe</button>
             <hr>
             <div *ngFor="let ms of getmsg()">
-                <p> {{ms.user}} : {{ms.msg}} </p>
+                <p>{{ms.date | date:'shortTime'}} {{ms.user}} : {{ms.msg}} </p>
 
             </div>
             <div *ngIf="sendflag">

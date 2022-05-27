@@ -1,9 +1,16 @@
-<div *ngIf="flag" >
-    <h1>Hey Welcome to Chat App</h1>
+<div *ngIf='!flag1'>
+    <h1  class="d-flex justify-content-center">Hey Welcome to Chat App !</h1>
     <br>
-    <p>Please Enter Your Name To Login</p>
-    <input type="text" #username>
-    <br>
-    <br>
-    <button (click)="login(username.value); flag=false; flagui() ">Login</button>
+    <p  class="d-flex justify-content-center">Please Enter Your Name To Login</p>
+    
+    <div class="d-flex justify-content-center">
+            <div class="row">
+
+                <input  type="text" class="form-control col-sm-4"#username>
+            </div>
+        <br>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button (click)="login(username.value); flag=false; flagui() " class="btn-sm btn-success">Login</button>
+    
+        </div>
 </div>

@@ -76,7 +76,7 @@ export class Channel{
         else{
             //this.setchname()
             
-            return [{user:"Please",msg:"Subscribe"}]
+            return [{date:new Date(), user:"Please",msg:"Subscribe"}]
         }
 
         
@@ -120,6 +120,8 @@ export class Channel{
         this.flag1=false
         this.flag2=true
         this.sendflag=true
+        this.setchname()
+
         this.sv.subscribetoch(this.us.getuser(),this.ch)
         
         //this.sv.getmsg(this.ch)

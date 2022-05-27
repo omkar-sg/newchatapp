@@ -14,7 +14,7 @@ export class Server{
     appdata:ServerData[]=[]
     userslogged:{username:string;channelsenrolled:string[]}[]=[]
     joinedchannels:{channel:string;members:string[]}[]=[]
-    channelmsg:{channel:string ;msgarr:{user:string;msg:string}[]}[]=[]
+    channelmsg:{channel:string ;msgarr:{date:Date,user:string;msg:string}[]}[]=[]
 
     userlogin(user:string){
        //let data=new ServerData()
@@ -22,8 +22,9 @@ export class Server{
         this.userslogged.push({username:user,channelsenrolled:["general"]})
         //this.appdata.push(data)
         this.channelmsg.push({channel:"general",msgarr:[]})
-        this.joinedchannels.push({channel:'general',members:[user]})
-        //console.log(this.appdata)
+        
+        this.joinedchannels.push({channel:'general',members:[]})
+        this.joinedchannels.find((el)=>el.channel=='general')?.members.push(user)        //console.log(this.appdata)
          //this.userslogged.push({username:user,channelsenrolled:["general"]})
 
 
@@ -37,6 +38,8 @@ export class Server{
         console.log(chname,"Server")
         this.channels.push(chname)
         this.channelmsg.push({channel:chname,msgarr:[]})
+        this.joinedchannels.push({channel:chname,members:[]})
+
         console.log(this.channels)
     }
 
@@ -44,7 +47,7 @@ export class Server{
         // this.appdata.find((ele)=>ele.userslogged.find((ele)=>ele.username==username))?.
         console.log(this.channelmsg.find((ele)=>ele.channel==chname))
         console.log(username)
-        this.channelmsg.find((ele)=>ele.channel==chname)?.msgarr.push({user:username,msg:ms})
+        this.channelmsg.find((ele)=>ele.channel==chname)?.msgarr.push({date:new Date(),user:username,msg:ms})
         console.log(this.channelmsg,chname,"Server")
 
     }
@@ -59,6 +62,8 @@ export class Server{
 
     subscribetoch(user:string,chaname:string){
         this.userslogged.find((ele)=>ele.username==user)?.channelsenrolled.push(chaname)
+        this.joinedchannels.find((el)=>el.channel==chaname)?.members.push(user)
+        console.log(this.joinedchannels," After subscribe")
 
     }
 
@@ -66,8 +71,15 @@ export class Server{
      let ind = this.userslogged.findIndex((ele)=>ele.username==user) //?.channelsenrolled.findIndex((el)=>el=chaname)
        let ind2= this.userslogged[ind].channelsenrolled.findIndex((el)=>el==chaname)
        this.userslogged[ind].channelsenrolled.splice(ind2,1)
+       let ind3 =this.joinedchannels.findIndex((el)=>el.channel==chaname)
+       let ind4=this.joinedchannels[ind3].members.findIndex((ele)=>ele==user)
+       this.joinedchannels[ind3].members.splice(ind4,1)
     }
-
+    getmembers(ch:string){
+        console.log(ch,"Members channel name")
+        return this.joinedchannels.find((ele)=>ele.channel==ch)?.members
+        
+    }
 
 
 
