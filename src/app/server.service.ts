@@ -20,6 +20,7 @@ export class Server{
        let data=new ServerData()
         data.userslogged.push({username:user,channelsenrolled:["general"]})
         this.appdata.push(data)
+        this.channelmsg.push({channel:"general",msgarr:[]})
         console.log(this.appdata)
          //this.userslogged.push({username:user,channelsenrolled:["general"]})
 

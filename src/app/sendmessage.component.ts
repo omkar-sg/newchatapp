@@ -19,6 +19,7 @@ export class SendMessage{
 
     sendmsg(m:string){
         //console.log(m)
+        console.log(this.crch.getcurrentch(),"Send msg")
         this.sv.sendmsg(this.usr.getuser(),this.crch.getcurrentch(),m)
         console.log(m,"from send message component")
 

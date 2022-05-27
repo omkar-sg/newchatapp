@@ -8,7 +8,7 @@ import { Server } from "./server.service";
 })
 export class GetMessage{
     constructor(private sv:Server, private crch:Currentch){}
-    chname=''
+    chname='general'
     
     setchname(){
         this.chname=this.crch.getcurrentch()
@@ -16,6 +16,7 @@ export class GetMessage{
 
     getmsg(){
         this.setchname()
+        console.log(this.chname," get msg comp")
         return this.sv.getmsg(this.chname)
     }
 
