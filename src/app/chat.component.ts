@@ -11,8 +11,21 @@ import { User } from "./username.service";
 })
 
 export class Chat{
+
+    flag=false
     
-    constructor(private sv:Server,private crch:Currentch){}
+    constructor(private sv:Server,private crch:Currentch, private us:User){}
+    usr='general'
+
+    setuser(){
+        this.usr=this.us.getuser()
+    }
+
+    uiflag(fg:boolean){
+        this.flag=fg
+        this.setuser()
+
+    }
 
     
 }

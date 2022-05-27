@@ -6,6 +6,7 @@ export class Currentch{
 
     setcurrentch(chname:string){
         this.currentchannel=chname
+        console.log(this.currentchannel,"Current channel service")
 
     }
 

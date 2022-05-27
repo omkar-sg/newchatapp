@@ -1,19 +1,21 @@
 <div >
-    <nca-login></nca-login>
+    <nca-login (chatuiflag)="uiflag($event)"></nca-login>
 </div>
 
 
 
-<div class="container">
-    <div class="row align-items-start">
-      <div class="col">
+<div class="container" *ngIf="flag">
+  <h1>Welcome {{usr}}</h1>
+    
         <nca-channel></nca-channel>
-      </div>
-      <div class="col">
-       <nca-getmessage></nca-getmessage>
-      </div>
-      <div class="col">
+      
+      <!-- <div class="col">
+        <nca-channel></nca-channel>
         <nca-sendmessage></nca-sendmessage>
-      </div>
+       <nca-getmessage></nca-getmessage>
+      </div> -->
+      <!-- <div class="col">
+        <nca-sendmessage></nca-sendmessage>
+      </div> -->
     </div>
     

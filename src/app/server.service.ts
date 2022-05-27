@@ -12,16 +12,18 @@ export class ServerData{
 export class Server{
     channels:string[]=['general']
     appdata:ServerData[]=[]
-    // userslogged:{username:string;channelsenrolled:string[]}[]=[]
-    // joinedchannels:{channel:string;members:string[]}[]=[]
+    userslogged:{username:string;channelsenrolled:string[]}[]=[]
+    joinedchannels:{channel:string;members:string[]}[]=[]
     channelmsg:{channel:string ;msgarr:{user:string;msg:string}[]}[]=[]
 
     userlogin(user:string){
-       let data=new ServerData()
-        data.userslogged.push({username:user,channelsenrolled:["general"]})
-        this.appdata.push(data)
+       //let data=new ServerData()
+        //data.userslogged.push({username:user,channelsenrolled:["general"]})
+        this.userslogged.push({username:user,channelsenrolled:["general"]})
+        //this.appdata.push(data)
         this.channelmsg.push({channel:"general",msgarr:[]})
-        console.log(this.appdata)
+        this.joinedchannels.push({channel:'general',members:[user]})
+        //console.log(this.appdata)
          //this.userslogged.push({username:user,channelsenrolled:["general"]})
 
 
@@ -53,6 +55,17 @@ export class Server{
     getmsg(chname:string){
         //return this.appdata.find((ele)=>ele.userslogged.find((ele)=>ele.username==chname))?.channelmsg
         return this.channelmsg.find((ele)=>ele.channel==chname)?.msgarr
+    }
+
+    subscribetoch(user:string,chaname:string){
+        this.userslogged.find((ele)=>ele.username==user)?.channelsenrolled.push(chaname)
+
+    }
+
+    unsubscribetoch(user:string,chaname:string){
+     let ind = this.userslogged.findIndex((ele)=>ele.username==user) //?.channelsenrolled.findIndex((el)=>el=chaname)
+       let ind2= this.userslogged[ind].channelsenrolled.findIndex((el)=>el==chaname)
+       this.userslogged[ind].channelsenrolled.splice(ind2,1)
     }
 
 

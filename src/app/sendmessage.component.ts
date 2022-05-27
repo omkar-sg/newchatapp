@@ -12,6 +12,7 @@ import { User } from "./username.service";
 export class SendMessage{
     constructor(private sv:Server,private crch:Currentch,private usr:User){  }
     ch=''
+    flag=true
 
     setcurrentch(){
         this.ch=this.crch.getcurrentch()
@@ -25,6 +26,13 @@ export class SendMessage{
 
         //this.sv.appdata.find((e)=>e.)
     }
+
+    public sndbutton(){
+        if(this.sv.userslogged.find((ele)=>ele.username==this.usr.getuser())?.channelsenrolled.includes(this.ch)){ this.flag=false}
+        else{this.flag=true}
+    }
+
+
 
 
 

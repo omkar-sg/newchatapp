@@ -1,5 +1,11 @@
-<Strong>Group Chat</Strong>
+<Strong>Group Chat {{chname}}</Strong> &nbsp; <button *ngIf="flag" (click)="subscribech();">Subscribe</button> &nbsp;
+<button *ngIf="flag2" (click)="unsubscribech()">Unsubscribe</button>
+<hr>
 <div *ngFor="let ms of getmsg()">
     <p> {{ms.user}} : {{ms.msg}} </p>
 
+</div>
+
+<div>
+    
 </div>
